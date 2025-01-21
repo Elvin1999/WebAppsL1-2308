@@ -1,0 +1,47 @@
+﻿@* @model IEnumerable<WebApplication1.Entities.Employee>
+
+<html>
+    <head></head>
+    <body>
+
+        <h1>We have @Model.Count() workers</h1>
+        @foreach (var item in @Model)
+    {
+        <div>
+            <h1>ID : @item.Id</h1>
+            <h1>Firstname : @item.Firstname</h1>
+            <h1>Lastname : @item.Lastname</h1>
+        </div>
+    }
+    </body>
+</html> *@
+
+@model EmployeeListViewModel
+
+<h1>
+    We have @Model.Employees.Count() workers
+</h1>
+
+@foreach(var item in Model.Employees)
+{
+    <div>
+        <h1>ID : @item.Id</h1>
+        <h1>Firstname : @item.Firstname</h1>
+        <h1>Lastname : @item.Lastname</h1>
+    </div>
+}
+<hr />
+
+<h1>We have @Model.Cities.Count() cities</h1>
+
+@foreach(var city in Model.Cities)
+{
+    <h3>@city</h3>
+}
+
+@{
+    var currentDateTime = DateTime.Now.ToLongDateString();
+}
+
+
+<h1 style="color:springgreen;font-size:3em;">@currentDateTime</h1>
