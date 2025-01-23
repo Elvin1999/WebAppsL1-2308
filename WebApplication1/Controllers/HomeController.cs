@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -85,13 +86,22 @@ namespace WebApplication1.Controllers
             return Json(employee);
         }
 
-        public IActionResult Search(string word,int id)
+        public IActionResult Search(string word, int id)
         {
             var wordResult = word.Trim().ToLower();
-            var items = employees.Where(e => e.Id==id && (e.Firstname.ToLower().Contains(wordResult) ||
+            var items = employees.Where(e => e.Id == id && (e.Firstname.ToLower().Contains(wordResult) ||
             e.Lastname.ToLower().Contains(wordResult)));
 
             return Json(items);
+        }
+
+        public IActionResult Test()
+        {
+            //return Redirect("/home/employees");
+            //return RedirectToAction("employees");
+            //return RedirectToAction("Employee", new { id = 1 });
+            var routeValue = new RouteValueDictionary(new { action = "Employee", controller = "Home", id = 1 });
+            return RedirectToRoute(routeValue);
         }
 
         public IActionResult Privacy()

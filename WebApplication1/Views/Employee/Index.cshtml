@@ -1,0 +1,29 @@
+﻿
+@model EmployeeListViewModel
+
+@if(TempData["Message"]!=null){
+<div class="alert alert-primary" role="alert">
+    @TempData["Message"]
+</div>
+}
+@* <section class="container bg-light">
+
+    @foreach (var item in Model.Employees)
+    {
+        <section style="width:40%;margin:5px;">
+            <h2>Name : @item.Firstname</h2>
+            <h2>Surname : @item.Lastname</h2>
+            <h2>City Id : @item.CityId</h2>
+           
+            <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete Employee</a>
+        </section>
+    }
+
+    <a class="btn btn-outline-success" href="/employee/add">Add New Employee</a>
+
+</section> *@
+
+<employee-list sort="a-z" count="2"></employee-list>
+
+
+@*  <a href="/employee/delete/1" class="btn btn-outline-danger">Delete Employee</a> *@
