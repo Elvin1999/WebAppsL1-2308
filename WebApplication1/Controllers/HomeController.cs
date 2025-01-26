@@ -8,20 +8,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Entities;
 using WebApplication1.Models;
+using WebApplication1.Services;
 
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //private readonly ICalculator _calculator;
+
+        //public HomeController(ICalculator calculator)
+        //{
+        //    _calculator = calculator;
+        //}
+
+
+        private readonly ICalculator _calculator2;
+        private readonly ICalculator _calculator1;
+
+        public HomeController(ICalculator calculator2, ICalculator calculator1)
         {
-            _logger = logger;
+            _calculator2 = calculator2;
+            _calculator1 = calculator1;
         }
 
         public string Index()
         {
+            // _calculator.Calculate(100);
+            _calculator1.Calculate(100);
+            _calculator2.Calculate(100);
             return "Hello from Index Action";
         }
 
