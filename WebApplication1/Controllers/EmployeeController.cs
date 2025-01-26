@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +60,13 @@ namespace WebApplication1.Controllers
         {
             var vm = new EmployeeAddViewModel
             {
-                Employee = new Employee()
+                Employee = new Employee(),
+                Cities=new List<SelectListItem>
+                {
+                    new SelectListItem{Text="Baku",Value="10"},
+                    new SelectListItem{Text="Khirdalan",Value="1"},
+                    new SelectListItem{Text="Sumqayit",Value="50"}
+                }
             };
             return View(vm);
         }
@@ -73,6 +80,12 @@ namespace WebApplication1.Controllers
                 employees.Add(viewModel.Employee);
                 return RedirectToAction("Index");
             }
+            viewModel.Cities = new List<SelectListItem>
+                {
+                    new SelectListItem{Text="Baku",Value="10"},
+                    new SelectListItem{Text="Khirdalan",Value="1"},
+                    new SelectListItem{Text="Sumqayit",Value="50"}
+                };
             return View(viewModel);
         }
     }
